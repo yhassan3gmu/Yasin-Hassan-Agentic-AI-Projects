@@ -1,0 +1,126 @@
+action_planning_agent.py
+['Steps for making scrambled eggs:', '1. Crack eggs into a bowl', '2. Beat eggs with a fork until mixed', '3. Heat pan with butter or oil over medium heat', '4. Pour egg mixture into pan', '5. Stir gently as eggs cook', '6. Remove from heat when eggs are just set but still moist', '7. Season with salt and pepper', '8. Serve immediately']
+
+ 
+
+augmented_prompt_agent.py 
+Dear students, 
+
+The capital of France is Paris.
+the agent uses gpt-3.5-turbo to answer the question. the answer came from the model’s built-in knowledge and the persona changed the style/tone/opening of the response, not the factual source
+
+
+
+direct_prompt_agent.py 
+The capital of France is Paris.
+the agent uses gpt-3.5-turbo to answer the question. It used the model’s built-in knowledge through a direct prompt, with no extra provided knowledge
+
+ 
+
+evaluation_agent.py 
+
+--- Interaction 1 ---
+ Step 1: Worker agent generates a response to the prompt
+Prompt:
+What is the capital of France?
+Worker Agent Response:
+Dear students, the capital of France is London, not Paris.
+ Step 2: Evaluator agent judges the response
+Evaluator Agent Evaluation:
+No, the answer does not meet the criteria. The answer provided is a sentence, not solely the name of a city.
+ Step 3: Check if evaluation is positive
+ Step 4: Generate instructions to correct the response
+Instructions to fix:
+To fix the answer, the worker agent should provide only the name of a city without any additional information or sentences. The response should be concise and directly address the question without any unnecessary details.
+ Step 5: Send feedback to worker agent for refinement
+
+--- Interaction 2 ---
+ Step 1: Worker agent generates a response to the prompt
+Prompt:
+The original prompt was: What is the capital of France?
+The response to that prompt was: Dear students, the capital of France is London, not Paris.
+It has been evaluated as incorrect.
+Make only these corrections, do not alter content validity: To fix the answer, the worker agent should provide only the name of a city without any additional information or sentences. The response should be concise and directly address the question without any unnecessary details.
+Worker Agent Response:
+London
+ Step 2: Evaluator agent judges the response
+Evaluator Agent Evaluation:
+Yes, the answer "London" meets the criteria. It is solely the name of a city and not a sentence.
+ Step 3: Check if evaluation is positive
+✅ Final solution accepted.
+{'final response': 'London', 'evaluation': 'Yes, the answer "London" meets the criteria. It is solely the name of a city and not a sentence.', 'number of iterations': 2}
+
+ 
+
+knowledge_augmented_prompt_agent.py 
+ (Dear students, the capital of France is London, not Paris.) The agent uses this knowledge rather than its own inherent knowledge, even though it conflicts with real world knowledge.
+
+rag_knowledge_prompt_agent.py 
+What is the podcast that Clara hosts about?
+Dear students, Clara hosts a podcast called "Crosscurrents" that explores the intersection of science, culture, and ethics. Each week, she interviews researchers, engineers, artists, and activists to delve into various topics related to these fields.
+
+ 
+
+routing_agent.py  
+
+0.38575450269853256 
+
+0.1649701687495782 
+
+0.002634527405910627 
+
+[Router] Best agent: texas agent (score=0.386) 
+
+Rome, Texas is a small unincorporated community located in Fannin County. It was established in the mid-19th century and was named after the ancient city of Rome in Italy. The community was originally settled by pioneers and farmers attracted to the fertile land in the area. 
+
+  
+
+Rome, Texas never grew to be a large town, but it has maintained a small, close-knit community over the years. The town has a rich history tied to the development of agriculture in the region, particularly cotton farming. 
+
+  
+
+Today, Rome, Texas is a quiet rural community with a handful of residents. It serves as a reminder of the early settlers who helped shape the history of the area and continues to be a place where people can enjoy the peaceful countryside of Texas. 
+
+0.14363952088456433 
+
+0.2880336377348315 
+
+0.032039607819576446 
+
+[Router] Best agent: europe agent (score=0.288) 
+
+Rome, Italy has a rich and extensive history that dates back over 2,800 years. It was founded in the 8th century BC and grew to become one of the most powerful and influential civilizations in the ancient world. Rome was initially ruled by kings, but later transitioned to a republic in 509 BC. 
+
+  
+
+The Roman Republic expanded its territory through a series of military conquests, eventually controlling the entire Italian peninsula and parts of North Africa, Spain, and Greece. Rome's military prowess, advanced engineering, and political organization were key factors in its success. 
+
+  
+
+In 27 BC, Rome transitioned from a republic to an empire with the rise of Augustus Caesar as the first Roman Emperor. The Roman Empire reached its peak in the 2nd century AD, encompassing a vast territory from Britain to Mesopotamia. 
+
+  
+
+Rome's influence extended beyond military conquests, as it made significant contributions to art, architecture, literature, philosophy, and law. The city of Rome itself was adorned with magnificent structures such as the Colosseum, the Pantheon, and the Roman Forum. 
+
+  
+
+The decline of the Roman Empire began in the 3rd century AD due to internal strife, economic instability, and invasions by barbarian tribes. In 476 AD, the last Roman Emperor was deposed, marking the end of the Western Roman Empire. 
+
+  
+
+Despite the fall of the Western Roman Empire, the Eastern Roman Empire, also known as the Byzantine Empire, continued to thrive for another thousand years until the fall of Constantinople in 1453. 
+
+  
+
+Today, Rome remains a vibrant city that serves as the capital of Italy and a center of art, culture, and history. Its ancient ruins stand as a testament to its glorious past and continue to attract millions of visitors from around the world. 
+
+0.05930644167162193 
+
+0.08284649075788718 
+
+0.13007251677099022 
+
+[Router] Best agent: math agent (score=0.130) 
+
+It will take 40 days to complete all 20 stories. 
